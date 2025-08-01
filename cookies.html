@@ -1,0 +1,165 @@
+{% extends 'Landingpage/base.html' %}
+
+{% block content %}
+<section class="py-20 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-lg shadow-lg p-8" data-aos="fade-up">
+            <h1 class="text-4xl font-bold text-gray-900 mb-8">Cookie Policy</h1>
+            <p class="text-gray-600 mb-8">Last updated: {{ "now"|date:"F d, Y" }}</p>
+
+            <div class="prose prose-lg max-w-none">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">What Are Cookies?</h2>
+                <p class="text-gray-600 mb-6">
+                    Cookies are small text files that are stored on your device when you visit our website. They help us provide you with a better experience by remembering your preferences and analyzing how you use our site.
+                </p>
+
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Types of Cookies We Use</h2>
+                
+                <div class="space-y-6">
+                    <div class="border-l-4 border-blue-500 pl-4">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Essential Cookies</h3>
+                        <p class="text-gray-600 mb-2">
+                            These cookies are necessary for the website to function properly. They enable core functionality such as security, network management, and accessibility.
+                        </p>
+                        <ul class="list-disc pl-6 text-gray-600">
+                            <li>Session management</li>
+                            <li>Authentication and security</li>
+                            <li>Load balancing</li>
+                        </ul>
+                    </div>
+
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Functional Cookies</h3>
+                        <p class="text-gray-600 mb-2">
+                            These cookies enable enhanced functionality and personalization, such as remembering your preferences and settings.
+                        </p>
+                        <ul class="list-disc pl-6 text-gray-600">
+                            <li>Language preferences</li>
+                            <li>Theme settings</li>
+                            <li>Form data retention</li>
+                        </ul>
+                    </div>
+
+                    <div class="border-l-4 border-yellow-500 pl-4">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Analytics Cookies</h3>
+                        <p class="text-gray-600 mb-2">
+                            These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously.
+                        </p>
+                        <ul class="list-disc pl-6 text-gray-600">
+                            <li>Page views and traffic sources</li>
+                            <li>User behavior patterns</li>
+                            <li>Performance metrics</li>
+                        </ul>
+                    </div>
+
+                    <div class="border-l-4 border-purple-500 pl-4">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Marketing Cookies</h3>
+                        <p class="text-gray-600 mb-2">
+                            These cookies are used to deliver relevant advertisements and track the effectiveness of our marketing campaigns.
+                        </p>
+                        <ul class="list-disc pl-6 text-gray-600">
+                            <li>Targeted advertising</li>
+                            <li>Campaign tracking</li>
+                            <li>Social media integration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Managing Your Cookie Preferences</h2>
+                <p class="text-gray-600 mb-6">
+                    You have several options for managing cookies:
+                </p>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+                    <h3 class="text-lg font-semibold text-blue-900 mb-3">Cookie Consent Banner</h3>
+                    <p class="text-blue-800 mb-4">
+                        When you first visit our website, you'll see a cookie consent banner where you can choose to accept or decline non-essential cookies.
+                    </p>
+                    <button id="show-cookie-banner" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200">
+                        <i class="fas fa-cog mr-2"></i>Manage Cookie Preferences
+                    </button>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <i class="fas fa-browser text-indigo-600 text-xl mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Browser Settings</h4>
+                            <p class="text-gray-600">You can control cookies through your browser settings. Most browsers allow you to block or delete cookies.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <i class="fas fa-shield-alt text-indigo-600 text-xl mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Third-Party Opt-Out</h4>
+                            <p class="text-gray-600">You can opt out of third-party cookies through industry opt-out pages and privacy tools.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <i class="fas fa-mobile-alt text-indigo-600 text-xl mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Mobile Devices</h4>
+                            <p class="text-gray-600">On mobile devices, you can manage cookies through your device's privacy settings.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Third-Party Cookies</h2>
+                <p class="text-gray-600 mb-6">
+                    We may use third-party services that set their own cookies. These include:
+                </p>
+                <ul class="list-disc pl-6 mb-6 text-gray-600">
+                    <li><strong>Google Analytics:</strong> For website analytics and performance monitoring</li>
+                    <li><strong>Social Media Platforms:</strong> For social sharing and login functionality</li>
+                    <li><strong>Payment Processors:</strong> For secure payment processing</li>
+                    <li><strong>Customer Support:</strong> For chat and support functionality</li>
+                </ul>
+
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Cookie Retention</h2>
+                <p class="text-gray-600 mb-6">
+                    Different cookies have different lifespans:
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-gray-900 mb-2">Session Cookies</h4>
+                        <p class="text-gray-600 text-sm">Deleted when you close your browser</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-gray-900 mb-2">Persistent Cookies</h4>
+                        <p class="text-gray-600 text-sm">Remain until expiration date or manual deletion</p>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Updates to This Policy</h2>
+                <p class="text-gray-600 mb-6">
+                    We may update this Cookie Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any material changes by posting the updated policy on our website.
+                </p>
+
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Contact Us</h2>
+                <p class="text-gray-600 mb-6">
+                    If you have any questions about our use of cookies, please contact us:
+                </p>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-gray-700">
+                        <strong>Email:</strong> privacy@resumeaibuilder.com<br>
+                        <strong>Subject:</strong> Cookie Policy Inquiry
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.getElementById('show-cookie-banner').addEventListener('click', function() {
+    // Remove existing cookie consent
+    localStorage.removeItem('cookieConsent');
+    
+    // Show the cookie banner
+    const cookieBanner = document.getElementById('cookie-banner');
+    cookieBanner.classList.remove('translate-y-full');
+});
+</script>
+{% endblock %}

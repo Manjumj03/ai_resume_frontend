@@ -1,0 +1,379 @@
+{% extends 'Landingpage/base.html' %}
+
+{% block content %}
+<style>
+    .captcha-text {
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        font-size: 1.2rem;
+        letter-spacing: 3px;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+    .faq-category { border-left: 4px solid; transition: all 0.3s ease; }
+    .faq-category:hover { transform: translateX(5px); box-shadow: 0 4px 12px rgba(0,0,0,0.1);}
+    .faq-item { transition: all 0.3s ease; }
+    .faq-item:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.1);}
+    .contact-category-card { transition: all 0.3s ease; }
+    .contact-category-card:hover { transform: translateY(-5px);}
+</style>
+
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Have questions about our AI Resume Builder? We're here to help you succeed in your job search.
+            </p>
+        </div>
+        <!-- Contact Categories -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12" data-aos="fade-up">
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+                <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-question-circle text-blue-600 text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">General Questions</h3>
+                <p class="text-gray-600">Questions about features, pricing, or how our AI Resume Builder works</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+                <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-tools text-green-600 text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Technical Support</h3>
+                <p class="text-gray-600">Need help with technical issues or account problems</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+                <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-user-cog text-purple-600 text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Account Management</h3>
+                <p class="text-gray-600">Manage your subscription, billing, or account settings</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Contact Form -->
+            <div id="contact-form" class="bg-white rounded-lg shadow-lg p-8" data-aos="fade-right">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
+                <form method="post" class="space-y-6">
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        <div class="text-red-600 text-sm mb-2">{{ form.non_field_errors }}</div>
+                    {% endif %}
+                    <div>
+                        <label for="inquiry_type" class="block text-sm font-medium text-gray-700 mb-2">
+                            Type of Inquiry *
+                        </label>
+                        <select id="inquiry_type" name="inquiry_type" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200">
+                            <option value="">Select inquiry type</option>
+                            <option value="general" {% if form.inquiry_type.value == 'general' %}selected{% endif %}>General Questions</option>
+                            <option value="technical" {% if form.inquiry_type.value == 'technical' %}selected{% endif %}>Technical Support</option>
+                            <option value="account" {% if form.inquiry_type.value == 'account' %}selected{% endif %}>Account Management</option>
+                            <option value="billing" {% if form.inquiry_type.value == 'billing' %}selected{% endif %}>Billing & Subscriptions</option>
+                            <option value="feedback" {% if form.inquiry_type.value == 'feedback' %}selected{% endif %}>Feedback & Suggestions</option>
+                        </select>
+                        {% if form.inquiry_type.errors %}
+                            <div class="text-red-600 text-sm">{{ form.inquiry_type.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                            Full Name *
+                        </label>
+                        <input type="text" id="name" name="name" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200"
+                               placeholder="Enter your full name" value="{{ form.name.value|default:'' }}">
+                        {% if form.name.errors %}
+                            <div class="text-red-600 text-sm">{{ form.name.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                            Email Address *
+                        </label>
+                        <input type="email" id="email" name="email" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200"
+                               placeholder="Enter your email address" value="{{ form.email.value|default:'' }}">
+                        {% if form.email.errors %}
+                            <div class="text-red-600 text-sm">{{ form.email.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
+                            Message *
+                        </label>
+                        <textarea id="message" name="message" rows="6" required
+                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 resize-none"
+                                  placeholder="Tell us how we can help you...">{{ form.message.value|default:'' }}</textarea>
+                        {% if form.message.errors %}
+                            <div class="text-red-600 text-sm">{{ form.message.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <!-- Human Verification -->
+                    <div class="bg-gray-50 rounded-lg p-4 border">
+                        <label class="block text-sm font-medium text-gray-700 mb-3">
+                            Human Verification *
+                        </label>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-1">
+                                <div class="bg-white border rounded-lg p-3 text-center font-mono text-lg tracking-wider captcha-text"
+                                     style="background: linear-gradient(45deg, #f3f4f6 25%, transparent 25%),
+                                            linear-gradient(-45deg, #f3f4f6 25%, transparent 25%),
+                                            linear-gradient(45deg, transparent 75%, #f3f4f6 75%),
+                                            linear-gradient(-45deg, transparent 75%, #f3f4f6 75%);
+                                            background-size: 4px 4px;
+                                            background-position: 0 0, 0 2px, 2px -2px, -2px 0px;">
+                                    <span id="captcha-text" class="select-none text-gray-800 font-bold">Loading...</span>
+                                </div>
+                                <button type="button" onclick="generateCaptcha()"
+                                        class="mt-2 text-sm text-indigo-600 hover:text-indigo-500 flex items-center">
+                                    <i class="fas fa-sync-alt mr-1"></i>Generate New Code
+                                </button>
+                            </div>
+                            <div class="flex-1">
+                                <input type="text" id="captcha-input" name="captcha" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200"
+                                       placeholder="Enter the code above"
+                                       maxlength="6">
+                                <input type="hidden" id="captcha-answer" name="captcha_answer">
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">
+                            <i class="fas fa-shield-alt mr-1"></i>
+                            This helps us prevent spam and protect your privacy.
+                        </p>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="privacy-agree" name="privacy_agree" required
+                               class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                               {% if form.privacy_agree.value %}checked{% endif %}>
+                        <label for="privacy-agree" class="ml-2 block text-sm text-gray-700">
+                            I agree to the <a href="{% url 'Landingpage:privacy' %}" class="text-indigo-600 hover:text-indigo-500">Privacy Policy</a>
+                            and consent to the processing of my personal data *
+                        </label>
+                        {% if form.privacy_agree.errors %}
+                            <div class="text-red-600 text-sm ml-2">{{ form.privacy_agree.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <button type="submit"
+                            class="w-full bg-indigo-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+                        <i class="fas fa-paper-plane mr-2"></i>Send Message
+                    </button>
+                </form>
+            </div>
+            <!-- Contact Information -->
+            <div class="space-y-8" data-aos="fade-left">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full">
+                            <i class="fas fa-envelope text-indigo-600 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Email Support</h3>
+                            <p class="text-gray-600">support@resumeaibuilder.com</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500">We typically respond within 24 hours</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 p-3 rounded-full">
+                            <i class="fas fa-clock text-green-600 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Support Hours</h3>
+                            <p class="text-gray-600">Monday - Friday: 9AM - 6PM EST</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500">Weekend support available for urgent issues</p>
+                </div>
+                <div class="bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg p-6 text-white">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-white bg-opacity-20 p-3 rounded-full">
+                            <i class="fas fa-user-cog text-white text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold">Manage Your Account</h3>
+                            <p class="text-purple-100 text-sm">Access your account settings and preferences</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <a href="#" class="block bg-white bg-opacity-10 hover:bg-opacity-20 rounded-lg p-3 transition-all duration-200">
+                            <div class="flex items-center">
+                                <i class="fas fa-user mr-3 text-purple-200"></i>
+                                <span class="text-sm">Update Profile Information</span>
+                            </div>
+                        </a>
+                        <a href="#" class="block bg-white bg-opacity-10 hover:bg-opacity-20 rounded-lg p-3 transition-all duration-200">
+                            <div class="flex items-center">
+                                <i class="fas fa-credit-card mr-3 text-purple-200"></i>
+                                <span class="text-sm">Billing & Subscription</span>
+                            </div>
+                        </a>
+                        <a href="#" class="block bg-white bg-opacity-10 hover:bg-opacity-20 rounded-lg p-3 transition-all duration-200">
+                            <div class="flex items-center">
+                                <i class="fas fa-download mr-3 text-purple-200"></i>
+                                <span class="text-sm">Download Your Resumes</span>
+                            </div>
+                        </a>
+                        <a href="#" class="block bg-white bg-opacity-10 hover:bg-opacity-20 rounded-lg p-3 transition-all duration-200">
+                            <div class="flex items-center">
+                                <i class="fas fa-key mr-3 text-purple-200"></i>
+                                <span class="text-sm">Change Password</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <i class="fas fa-question-circle text-blue-600 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-gray-900">FAQ</h3>
+                            <p class="text-gray-600">Find quick answers to common questions</p>
+                        </div>
+                    </div>
+                    <a href="#faq-section" class="text-indigo-600 hover:text-indigo-500 text-sm font-medium transition-colors duration-200">
+                        Visit FAQ Section →
+                    </a>
+                </div>
+                <div class="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg p-6 text-white">
+                    <h3 class="text-lg font-semibold mb-2">Need Immediate Help?</h3>
+                    <p class="text-indigo-100 mb-4">
+                        Check out our comprehensive help center with tutorials and guides.
+                    </p>
+                    <a href="#contact-form" class="inline-flex items-center bg-white text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-200">
+                        <i class="fas fa-envelope mr-2"></i>Contact Form
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq-section" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+            <p class="text-gray-600">Quick answers to common questions about our AI Resume Builder</p>
+        </div>
+        <div class="space-y-6">
+            <div class="bg-blue-50 rounded-lg p-4 mb-6" data-aos="fade-up">
+                <h3 class="text-xl font-semibold text-blue-900 mb-2">
+                    <i class="fas fa-rocket mr-2"></i>Getting Started
+                </h3>
+            </div>
+            <div class="faq-item bg-gray-50 rounded-lg p-6 border-l-4 border-indigo-500" data-aos="fade-up" data-aos-delay="100">
+                <h4 class="text-lg font-semibold text-gray-900 mb-2">How does the AI optimization work?</h4>
+                <p class="text-gray-600">Our AI analyzes job descriptions and suggests relevant keywords, phrases, and formatting to help your resume pass through ATS systems and catch recruiters' attention. It uses advanced natural language processing to match your skills with job requirements.</p>
+            </div>
+            <div class="faq-item bg-gray-50 rounded-lg p-6" data-aos="fade-up" data-aos-delay="150">
+                <h4 class="text-lg font-semibold text-gray-900 mb-2">Do I need to create an account to use the service?</h4>
+                <p class="text-gray-600">Yes, creating a free account allows us to save your progress, store multiple resume versions, and provide personalized recommendations. Your account also gives you access to additional templates and features.</p>
+            </div>
+            <div class="bg-green-50 rounded-lg p-4 mb-6 mt-8" data-aos="fade-up">
+                <h3 class="text-xl font-semibold text-green-900 mb-2">
+                    <i class="fas fa-file-alt mr-2"></i>Resume Creation & Editing
+                </h3>
+            </div>
+            <div class="faq-item bg-gray-50 rounded-lg p-6 border-l-4 border-green-500" data-aos="fade-up" data-aos-delay="200">
+                <h4 class="text-lg font-semibold text-gray-900 mb-2">Can I edit my resume after creating it?</h4>
+                <p class="text-gray-600">Absolutely! You can update and modify your resume anytime through your dashboard. Our platform saves your progress automatically, so you never lose your work. You can also create multiple versions for different job applications.</p>
+            </div>
+            <div class="faq-item bg-gray-50 rounded-lg p-6" data-aos="fade-up" data-aos-delay="250">
+                <h4 class="text-lg font-semibold text-gray-900 mb-2">How many resume templates are available?</h4>
+                <p class="text-gray-600">We offer 15+ professional templates designed for different industries and career levels. All templates are ATS-friendly and optimized for modern hiring practices. Premium users get access to exclusive designs and customization options.</p>
+            </div>
+            <div class="faq-item bg-gray-50 rounded-lg p-6" data-aos="fade-up" data-aos-delay="300">
+                <h4 class="text-lg font-semibold text-gray-900 mb-2">What file formats can I download?</h4>
+                <p class="text-gray-600">You can download your resume in PDF, Word (DOCX), and plain text formats. All formats are optimized for ATS compatibility. PDF is recommended for most applications, while DOCX is preferred by some companies for easy parsing.</p>
+            </div>
+            <div class="bg-purple-50 rounded-lg p-4 mb-6 mt-8" data-aos="fade-up">
+                <h3 class="text-xl font-semibold text-purple-900 mb-2">
+                    <i class="fas fa-user-cog mr-2"></i>Account & Billing
+                </h3>
+            </div>
+            <div class="faq-item bg-gray-50 rounded-lg p-6 border-l-4 border-purple-500" data-aos="fade-up" data-aos-delay="350">
+                <h4 class="text-lg font-semibold text-gray-900 mb-2">What's the difference between free and premium plans?</h4>
+                <p class="text-gray-600">Free users can create 1 resume with basic templates and download in PDF format. Premium users get unlimited resumes, all templates, multiple file formats, AI-powered job matching, and priority support. Check our pricing page for detailed comparisons.</p>
+            </div>
+            <div class="faq-item bg-gray-50 rounded-lg p-6" data-aos="fade-up" data-aos-delay="400">
+                <h4 class="text-lg font-semibold text-gray-900 mb-2">Can I cancel my subscription anytime?</h4>
+                <p class="text-gray-600">Yes, you can cancel your subscription at any time from your account settings. Your premium features will remain active until the end of your current billing period. No cancellation fees or hidden charges.</p>
+            </div>
+            <div class="bg-orange-50 rounded-lg p-4 mb-6 mt-8" data-aos="fade-up">
+                <h3 class="text-xl font-semibold text-orange-900 mb-2">
+                    <i class="fas fa-shield-alt mr-2"></i>Privacy & Security
+                </h3>
+            </div>
+            <div class="faq-item bg-gray-50 rounded-lg p-6 border-l-4 border-orange-500" data-aos="fade-up" data-aos-delay="450">
+                <h4 class="text-lg font-semibold text-gray-900 mb-2">Is my data secure?</h4>
+                <p class="text-gray-600">Yes, we use industry-standard encryption (SSL/TLS) and security measures to protect your personal information. Your resume data is stored securely and never shared with third parties without your explicit consent. We comply with GDPR and other privacy regulations.</p>
+            </div>
+            <div class="faq-item bg-gray-50 rounded-lg p-6" data-aos="fade-up" data-aos-delay="500">
+                <h4 class="text-lg font-semibold text-gray-900 mb-2">Can I delete my account and data?</h4>
+                <p class="text-gray-600">Absolutely. You can delete your account and all associated data at any time from your account settings. This action is permanent and cannot be undone. We also provide data export options before deletion.</p>
+            </div>
+            <div class="bg-red-50 rounded-lg p-4 mb-6 mt-8" data-aos="fade-up">
+                <h3 class="text-xl font-semibold text-red-900 mb-2">
+                    <i class="fas fa-tools mr-2"></i>Technical Support
+                </h3>
+            </div>
+            <div class="faq-item bg-gray-50 rounded-lg p-6 border-l-4 border-red-500" data-aos="fade-up" data-aos-delay="550">
+                <h4 class="text-lg font-semibold text-gray-900 mb-2">What browsers are supported?</h4>
+                <p class="text-gray-600">Our platform works best on modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version for optimal performance. Mobile browsers are also supported for viewing and basic editing.</p>
+            </div>
+            <div class="faq-item bg-gray-50 rounded-lg p-6" data-aos="fade-up" data-aos-delay="600">
+                <h4 class="text-lg font-semibold text-gray-900 mb-2">How fast is your support response time?</h4>
+                <p class="text-gray-600">We typically respond to support requests within 24 hours during business days (Monday-Friday, 9AM-6PM EST). Premium users receive priority support with faster response times. Emergency issues are handled immediately.</p>
+            </div>
+        </div>
+        <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="650">
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg p-8 text-white">
+                <h3 class="text-2xl font-bold mb-4">Still have questions?</h3>
+                <p class="text-indigo-100 mb-6">
+                    Can't find the answer you're looking for? Our support team is here to help you succeed.
+                </p>
+                <a href="#" onclick="document.querySelector('#name').focus(); window.scrollTo({top: 0, behavior: 'smooth'});"
+                   class="inline-flex items-center bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-200 shadow-lg">
+                    <i class="fas fa-envelope mr-2"></i>Contact Support
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+let captchaAnswer = '';
+function generateCaptcha() {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result = '';
+    for (let i = 0; i < 6; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    captchaAnswer = result;
+    document.getElementById('captcha-text').textContent = result;
+    document.getElementById('captcha-answer').value = result;
+    document.getElementById('captcha-input').value = '';
+}
+document.addEventListener('DOMContentLoaded', function() {
+    generateCaptcha();
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function(e) {
+        const captchaInput = document.getElementById('captcha-input').value.toUpperCase();
+        const captchaAnswer = document.getElementById('captcha-answer').value;
+        if (captchaInput !== captchaAnswer) {
+            e.preventDefault();
+            alert('Please enter the correct verification code.');
+            generateCaptcha();
+            return false;
+        }
+    });
+});
+</script>
+{% endblock %}

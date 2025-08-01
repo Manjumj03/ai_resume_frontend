@@ -1,0 +1,878 @@
+{% extends 'Landingpage/base.html' %}
+
+{% block content %}
+<!-- Hero Section with Shuffling Resumes -->
+<section class="purple-gradient-bg text-white py-20 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Left Side - Text Content -->
+            <div class="text-left" data-aos="fade-right">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    Build <span class="text-yellow-300">ATS-Friendly</span> Resumes with <span class="text-yellow-300">AI Voice Assistant</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-gray-200">
+                    🎤 Simply speak your experience, and our AI will craft a professional resume that beats ATS systems. Get 75% more interviews with voice-powered resume building.
+                </p>
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-4 mb-6">
+                    <div class="flex items-center text-yellow-300 mb-2">
+                        <i class="fas fa-microphone mr-2"></i>
+                        <span class="font-semibold">AI Voice Features:</span>
+                    </div>
+                    <ul class="text-sm text-gray-200 space-y-1">
+                        <li>• Voice-to-text resume creation</li>
+                        <li>• Real-time ATS optimization suggestions</li>
+                        <li>• Natural language job matching</li>
+                        <li>• Instant keyword enhancement</li>
+                    </ul>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-300 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+                        <i class="fas fa-microphone mr-2"></i>Start with Voice - Free
+                    </a>
+                    <a href="{% url 'login' %}" class="border-2 border-yellow-400 text-yellow-400 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-400 hover:text-gray-900 transition-all duration-200">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Side - Enhanced Demo Resumes -->
+            <div class="relative" data-aos="fade-left">
+                <div id="resume-carousel" class="relative w-full max-w-md mx-auto h-96">
+                    <!-- Resume 1 - Software Developer with AI Voice Features -->
+                    <div class="resume-card bg-white text-gray-900 rounded-lg shadow-2xl p-4 h-full opacity-100 transition-all duration-1000 ease-in-out">
+                        <div class="border-b border-gray-200 pb-2 mb-3">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h2 class="text-base font-bold text-gray-900">Sarah Johnson</h2>
+                                    <p class="text-blue-600 font-medium text-sm">Senior Software Developer</p>
+                                </div>
+                                <div class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">
+                                    <i class="fas fa-microphone mr-1"></i>Voice Built
+                                </div>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-1">
+                                <p>📧 sarah.johnson@email.com | 📱 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <h3 class="font-semibold text-gray-900 mb-1 text-sm flex items-center">
+                                Professional Summary
+                                <i class="fas fa-robot text-blue-500 ml-2 text-xs" title="AI Optimized"></i>
+                            </h3>
+                            <p class="text-xs text-gray-700 leading-tight">Full-stack developer with 5+ years building scalable web applications. Expert in React, Node.js, and Python...</p>
+                        </div>
+                        <div class="mb-2">
+                            <h3 class="font-semibold text-gray-900 mb-1 text-sm">Experience</h3>
+                            <div class="text-xs">
+                                <p class="font-medium text-gray-900">Senior Software Engineer - TechCorp Inc.</p>
+                                <p class="text-gray-600">Jan 2021 - Present</p>
+                                <p class="text-gray-700">• Led development of microservices architecture serving 1M+ users</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-1 mb-2">
+                            <span class="bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded text-xs">React.js</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded text-xs">Node.js</span>
+                            <span class="bg-violet-100 text-violet-700 px-1.5 py-0.5 rounded text-xs">Python</span>
+                            <span class="bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded text-xs">AWS</span>
+                        </div>
+                        <div class="bg-emerald-50 border border-emerald-200 rounded p-2">
+                            <div class="flex items-center justify-between text-emerald-700 text-xs">
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle mr-1"></i>
+                                    <span class="font-medium">ATS Score: 98/100</span>
+                                </div>
+                                <span class="bg-emerald-200 px-2 py-1 rounded">ATS Ready</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resume 2 - Marketing Manager with Voice Enhancement -->
+                    <div class="resume-card bg-white text-gray-900 rounded-lg shadow-2xl p-4 h-full opacity-0 transition-all duration-1000 ease-in-out">
+                        <div class="border-b border-gray-200 pb-2 mb-3">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h2 class="text-base font-bold text-gray-900">Michael Chen</h2>
+                                    <p class="text-rose-600 font-medium text-sm">Digital Marketing Manager</p>
+                                </div>
+                                <div class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full">
+                                    <i class="fas fa-brain mr-1"></i>AI Enhanced
+                                </div>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-1">
+                                <p>📧 m.chen@email.com | 📱 (555) 987-6543</p>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <h3 class="font-semibold text-gray-900 mb-1 text-sm flex items-center">
+                                Professional Summary
+                                <i class="fas fa-magic text-purple-500 ml-2 text-xs" title="AI Generated"></i>
+                            </h3>
+                            <p class="text-xs text-gray-700 leading-tight">Results-driven marketing professional with 6+ years driving 300% ROI increases through data-driven campaigns...</p>
+                        </div>
+                        <div class="mb-2">
+                            <h3 class="font-semibold text-gray-900 mb-1 text-sm">Key Achievements</h3>
+                            <div class="text-xs">
+                                <p class="text-gray-700">• Increased organic traffic by 250% in 12 months</p>
+                                <p class="text-gray-700">• Managed $500K+ annual marketing budget</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-1 mb-2">
+                            <span class="bg-rose-100 text-rose-700 px-1.5 py-0.5 rounded text-xs">SEO/SEM</span>
+                            <span class="bg-sky-100 text-sky-700 px-1.5 py-0.5 rounded text-xs">Google Ads</span>
+                            <span class="bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded text-xs">Analytics</span>
+                            <span class="bg-green-100 text-green-700 px-1.5 py-0.5 rounded text-xs">A/B Testing</span>
+                        </div>
+                        <div class="bg-emerald-50 border border-emerald-200 rounded p-2">
+                            <div class="flex items-center justify-between text-emerald-700 text-xs">
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle mr-1"></i>
+                                    <span class="font-medium">ATS Score: 96/100</span>
+                                </div>
+                                <span class="bg-blue-200 text-blue-700 px-2 py-1 rounded">Voice Optimized</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resume 3 - Data Scientist with AI Features -->
+                    <div class="resume-card bg-white text-gray-900 rounded-lg shadow-2xl p-4 h-full opacity-0 transition-all duration-1000 ease-in-out">
+                        <div class="border-b border-gray-200 pb-2 mb-3">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h2 class="text-base font-bold text-gray-900">Dr. Emily Rodriguez</h2>
+                                    <p class="text-purple-600 font-medium text-sm">Senior Data Scientist</p>
+                                </div>
+                                <div class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">
+                                    <i class="fas fa-star mr-1"></i>Expert Level
+                                </div>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-1">
+                                <p>📧 emily.rodriguez@email.com | 🎓 PhD in Data Science</p>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <h3 class="font-semibold text-gray-900 mb-1 text-sm flex items-center">
+                                Core Competencies
+                                <i class="fas fa-chart-line text-green-500 ml-2 text-xs" title="Performance Optimized"></i>
+                            </h3>
+                            <p class="text-xs text-gray-700 leading-tight">Machine Learning expert with 7+ years building predictive models that increased revenue by $50M+...</p>
+                        </div>
+                        <div class="mb-2">
+                            <h3 class="font-semibold text-gray-900 mb-1 text-sm">Notable Projects</h3>
+                            <div class="text-xs">
+                                <p class="text-gray-700">• Built fraud detection model (99.8% accuracy)</p>
+                                <p class="text-gray-700">• Led AI team developing recommendation engine</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-1 mb-2">
+                            <span class="bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded text-xs">Python</span>
+                            <span class="bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded text-xs">TensorFlow</span>
+                            <span class="bg-cyan-100 text-cyan-700 px-1.5 py-0.5 rounded text-xs">SQL</span>
+                            <span class="bg-red-100 text-red-700 px-1.5 py-0.5 rounded text-xs">PyTorch</span>
+                        </div>
+                        <div class="bg-emerald-50 border border-emerald-200 rounded p-2">
+                            <div class="flex items-center justify-between text-emerald-700 text-xs">
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle mr-1"></i>
+                                    <span class="font-medium">ATS Score: 97/100</span>
+                                </div>
+                                <span class="bg-purple-200 text-purple-700 px-2 py-1 rounded">AI Powered</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resume 4 - UX Designer with Voice Features -->
+                    <div class="resume-card bg-white text-gray-900 rounded-lg shadow-2xl p-4 h-full opacity-0 transition-all duration-1000 ease-in-out">
+                        <div class="border-b border-gray-200 pb-2 mb-3">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h2 class="text-base font-bold text-gray-900">David Kim</h2>
+                                    <p class="text-indigo-600 font-medium text-sm">Senior UX/UI Designer</p>
+                                </div>
+                                <div class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded-full">
+                                    <i class="fas fa-palette mr-1"></i>Creative Pro
+                                </div>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-1">
+                                <p>📧 david.kim@email.com | 🎨 Behance: behance.net/davidkim</p>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <h3 class="font-semibold text-gray-900 mb-1 text-sm flex items-center">
+                                Design Philosophy
+                                <i class="fas fa-lightbulb text-yellow-500 ml-2 text-xs" title="Innovation Focused"></i>
+                            </h3>
+                            <p class="text-xs text-gray-700 leading-tight">Human-centered designer with 5+ years creating award-winning experiences for 50M+ users...</p>
+                        </div>
+                        <div class="mb-2">
+                            <h3 class="font-semibold text-gray-900 mb-1 text-sm">Impact Metrics</h3>
+                            <div class="text-xs">
+                                <p class="text-gray-700">• Increased user engagement by 85%</p>
+                                <p class="text-gray-700">• Reduced bounce rate by 45%</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-1 mb-2">
+                            <span class="bg-pink-100 text-pink-700 px-1.5 py-0.5 rounded text-xs">Figma</span>
+                            <span class="bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded text-xs">Adobe XD</span>
+                            <span class="bg-teal-100 text-teal-700 px-1.5 py-0.5 rounded text-xs">Prototyping</span>
+                            <span class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded text-xs">User Research</span>
+                        </div>
+                        <div class="bg-emerald-50 border border-emerald-200 rounded p-2">
+                            <div class="flex items-center justify-between text-emerald-700 text-xs">
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle mr-1"></i>
+                                    <span class="font-medium">ATS Score: 95/100</span>
+                                </div>
+                                <span class="bg-pink-200 text-pink-700 px-2 py-1 rounded">Design Ready</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resume 5 - Project Manager with AI Voice -->
+                    <div class="resume-card bg-white text-gray-900 rounded-lg shadow-2xl p-4 h-full opacity-0 transition-all duration-1000 ease-in-out">
+                        <div class="border-b border-gray-200 pb-2 mb-3">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h2 class="text-base font-bold text-gray-900">Lisa Thompson, PMP</h2>
+                                    <p class="text-green-600 font-medium text-sm">Senior Project Manager</p>
+                                </div>
+                                <div class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">
+                                    <i class="fas fa-certificate mr-1"></i>Certified
+                                </div>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-1">
+                                <p>📧 lisa.thompson@email.com | 🏆 PMP Certified</p>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <h3 class="font-semibold text-gray-900 mb-1 text-sm flex items-center">
+                                Leadership Excellence
+                                <i class="fas fa-users text-blue-500 ml-2 text-xs" title="Team Leader"></i>
+                            </h3>
+                            <p class="text-xs text-gray-700 leading-tight">Certified PMP with 8+ years delivering $100M+ projects on time and under budget...</p>
+                        </div>
+                        <div class="mb-2">
+                            <h3 class="font-semibold text-gray-900 mb-1 text-sm">Key Achievements</h3>
+                            <div class="text-xs">
+                                <p class="text-gray-700">• Managed 50+ cross-functional team members</p>
+                                <p class="text-gray-700">• Delivered projects 20% faster than industry average</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-1 mb-2">
+                            <span class="bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded text-xs">Agile/Scrum</span>
+                            <span class="bg-green-100 text-green-700 px-1.5 py-0.5 rounded text-xs">PMP</span>
+                            <span class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded text-xs">JIRA</span>
+                            <span class="bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded text-xs">Risk Management</span>
+                        </div>
+                        <div class="bg-emerald-50 border border-emerald-200 rounded p-2">
+                            <div class="flex items-center justify-between text-emerald-700 text-xs">
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle mr-1"></i>
+                                    <span class="font-medium">ATS Score: 99/100</span>
+                                </div>
+                                <span class="bg-yellow-200 text-yellow-700 px-2 py-1 rounded">Perfect Match</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enhanced Carousel Indicators -->
+                <div class="flex justify-center mt-6 space-x-2">
+                    <div class="indicator active w-3 h-3 bg-yellow-400 rounded-full transition-all duration-300 cursor-pointer"></div>
+                    <div class="indicator w-3 h-3 bg-white bg-opacity-50 rounded-full transition-all duration-300 cursor-pointer"></div>
+                    <div class="indicator w-3 h-3 bg-white bg-opacity-50 rounded-full transition-all duration-300 cursor-pointer"></div>
+                    <div class="indicator w-3 h-3 bg-white bg-opacity-50 rounded-full transition-all duration-300 cursor-pointer"></div>
+                    <div class="indicator w-3 h-3 bg-white bg-opacity-50 rounded-full transition-all duration-300 cursor-pointer"></div>
+                </div>
+
+                <!-- Enhanced Floating Elements -->
+                <div class="absolute -top-4 -right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-sm font-semibold animate-bounce">
+                    <i class="fas fa-microphone mr-1"></i>Voice AI
+                </div>
+                <div class="absolute -bottom-4 -left-4 bg-emerald-500 text-white px-3 py-1 rounded-full text-sm font-semibold animate-pulse">
+                    <i class="fas fa-robot mr-1"></i>ATS-Ready
+                </div>
+                <div class="absolute top-1/2 -left-8 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-semibold animate-pulse">
+                    <i class="fas fa-brain mr-1"></i>Smart
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Stats Section -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16" data-aos="fade-up">
+            <div class="text-center">
+                <div class="text-3xl font-bold text-yellow-300 mb-2">50K+</div>
+                <div class="text-gray-300">Voice-Built Resumes</div>
+            </div>
+            <div class="text-center">
+                <div class="text-3xl font-bold text-yellow-300 mb-2">98%</div>
+                <div class="text-gray-300">ATS Success Rate</div>
+            </div>
+            <div class="text-center">
+                <div class="text-3xl font-bold text-yellow-300 mb-2">75%</div>
+                <div class="text-gray-300">More Interviews</div>
+            </div>
+            <div class="text-center">
+                <div class="text-3xl font-bold text-yellow-300 mb-2">2 Min</div>
+                <div class="text-gray-300">Voice Build Time</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI Voice Features Section -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Revolutionary <span class="text-purple-600">AI Voice Assistant</span>
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Simply speak your career story - our AI listens, understands, and crafts a professional resume that passes ATS systems and impresses recruiters.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Voice Feature 1 -->
+            <div class="text-center p-6 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border border-[#E1DDF1] bg-[#F3EDF7]" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-[#E1DDF1] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-microphone text-2xl text-[#6D28D9]"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 text-[#6D28D9]">Voice-to-Resume Magic</h3>
+                <p class="text-gray-600">Speak naturally about your experience, skills, and achievements. Our AI converts your words into professional resume content instantly.</p>
+            </div>
+
+            <!-- Voice Feature 2 -->
+            <div class="text-center p-6 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border border-[#C8EAE0] bg-[#E9F6F2]" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-[#C8EAE0] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-brain text-2xl text-[#059669]"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 text-[#059669]">Smart Job Matching</h3>
+                <p class="text-gray-600">AI analyzes job descriptions and optimizes your resume content in real-time for maximum ATS compatibility and keyword matching.</p>
+            </div>
+
+            <!-- Voice Feature 3 -->
+            <div class="text-center p-6 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border border-[#FDE68A] bg-[#FFFAEB]" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-[#FDE68A] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-magic text-2xl text-[#D97706]"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 text-[#D97706]">Instant Enhancement</h3>
+                <p class="text-gray-600">AI suggests powerful action verbs, quantifies achievements, and restructures content for maximum impact and readability.</p>
+            </div>
+
+            <!-- ATS Feature 1 -->
+            <div class="text-center p-6 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border border-[#BFDBFE] bg-[#E7F1FB]" data-aos="fade-up" data-aos-delay="400">
+                <div class="bg-[#BFDBFE] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-shield-alt text-2xl text-[#2563EB]"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 text-[#2563EB]">ATS-Proof Formatting</h3>
+                <p class="text-gray-600">Every resume is formatted to pass through Applicant Tracking Systems used by 98% of Fortune 500 companies.</p>
+            </div>
+
+            <!-- ATS Feature 2 -->
+            <div class="text-center p-6 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border border-[#FCA5A5] bg-[#FDECEC]" data-aos="fade-up" data-aos-delay="500">
+                <div class="bg-[#FCA5A5] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-search text-2xl text-[#DC2626]"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 text-[#DC2626]">Keyword Optimization</h3>
+                <p class="text-gray-600">AI identifies and integrates industry-specific keywords that recruiters and ATS systems are actively searching for.</p>
+            </div>
+
+            <!-- ATS Feature 3 -->
+            <div class="text-center p-6 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border border-[#C7D2FE] bg-[#EEF2FF]" data-aos="fade-up" data-aos-delay="600">
+                <div class="bg-[#C7D2FE] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-chart-line text-2xl text-[#4F46E5]"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 text-[#4F46E5]">Real-Time ATS Scoring</h3>
+                <p class="text-gray-600">Get instant feedback on your resume's ATS compatibility with detailed scoring and improvement suggestions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- How Voice AI Works Section -->
+<section class="py-20 bg-gradient-to-br from-purple-50 to-indigo-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                How Our Voice AI Works
+            </h2>
+            <p class="text-xl text-gray-600">
+                Revolutionary 3-step process: Speak, AI processes, Perfect resume ready
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Step 1 -->
+            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-purple-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">1. Speak Your Story</h3>
+                <p class="text-gray-600">Click record and naturally describe your work experience, skills, and achievements. No typing required - just speak!</p>
+                <div class="mt-4 p-3 bg-purple-100 rounded-lg">
+                    <p class="text-sm text-purple-700 italic">"I worked as a software engineer for 3 years, built mobile apps, and increased user engagement by 40%..."</p>
+                </div>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-purple-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">2. AI Processing Magic</h3>
+                <p class="text-gray-600">Our advanced AI analyzes your speech, extracts key information, optimizes for ATS, and structures professional content.</p>
+                <div class="mt-4 p-3 bg-blue-100 rounded-lg">
+                    <p class="text-sm text-blue-700">🤖 AI is optimizing keywords, formatting structure, enhancing impact statements...</p>
+                </div>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-purple-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                    <i class="fas fa-download"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">3. Perfect Resume Ready</h3>
+                <p class="text-gray-600">Download your professionally formatted, ATS-optimized resume in multiple formats. Ready to land interviews!</p>
+                <div class="mt-4 p-3 bg-emerald-100 rounded-lg">
+                    <p class="text-sm text-emerald-700">✅ ATS Score: 98/100 | Ready for download in PDF/Word</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ATS Explanation Section -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                    Beat the <span class="text-purple-600">ATS System</span> Every Time
+                </h2>
+                <p class="text-lg text-gray-600 mb-6">
+                    Applicant Tracking Systems (ATS) filter 75% of resumes before human eyes see them. Our AI ensures your resume not only passes but excels in ATS rankings.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3 text-lg"></i>
+                        <div>
+                            <p class="text-gray-700 font-semibold">ATS-Optimized Formatting</p>
+                            <p class="text-gray-600 text-sm">Clean, machine-readable structure without complex graphics</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3 text-lg"></i>
+                        <div>
+                            <p class="text-gray-700 font-semibold">Strategic Keyword Integration</p>
+                            <p class="text-gray-600 text-sm">AI matches your skills with job requirements automatically</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3 text-lg"></i>
+                        <div>
+                            <p class="text-gray-700 font-semibold">Standard Section Headers</p>
+                            <p class="text-gray-600 text-sm">Properly labeled sections that ATS systems recognize</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3 text-lg"></i>
+                        <div>
+                            <p class="text-gray-700 font-semibold">Real-Time Compatibility Check</p>
+                            <p class="text-gray-600 text-sm">Instant ATS scoring with improvement suggestions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center" data-aos="fade-left">
+                <div class="purple-gradient-bg rounded-lg p-8 text-white shadow-2xl">
+                    <i class="fas fa-chart-line text-6xl mb-4 text-yellow-300"></i>
+                    <h3 class="text-2xl font-bold mb-4">75% More Interviews</h3>
+                    <p class="text-lg mb-4">Voice-built, ATS-optimized resumes get 3x more callbacks</p>
+                    <div class="grid grid-cols-2 gap-4 mt-6">
+                        <div class="bg-white bg-opacity-20 rounded p-3">
+                            <div class="text-2xl font-bold text-yellow-300">98%</div>
+                            <div class="text-sm">ATS Pass Rate</div>
+                        </div>
+                        <div class="bg-white bg-opacity-20 rounded p-3">
+                            <div class="text-2xl font-bold text-yellow-300">2 Min</div>
+                            <div class="text-sm">Build Time</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="purple-gradient-bg text-white py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            Ready to Build Your Dream Resume with <span class="text-yellow-300">Voice AI?</span>
+        </h2>
+        <p class="text-xl mb-8 text-gray-200">
+            🎤 Speak for 2 minutes, get a professional ATS-ready resume. Join 50,000+ job seekers who landed their dream jobs with our voice-powered platform.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#" class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-300 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+                <i class="fas fa-microphone mr-2"></i>Start Voice Building - FREE
+            </a>
+            <a href="{% url 'Landingpage:about' %}" class="border-2 border-yellow-400 text-yellow-400 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-400 hover:text-gray-900 transition-all duration-200">
+                <i class="fas fa-play-circle mr-2"></i>Watch Demo
+            </a>
+        </div>
+        <div class="mt-8 text-sm text-gray-300">
+            <p>✨ No credit card required • 🎤 Voice-powered • 🤖 AI-optimized • 📄 ATS-ready</p>
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const resumeCards = document.querySelectorAll('.resume-card');
+    const indicators = document.querySelectorAll('.indicator');
+    let currentIndex = 0;
+    const totalCards = resumeCards.length;
+    let autoShuffle;
+
+    function showResume(index) {
+        // Hide all cards
+        resumeCards.forEach((card, i) => {
+            if (i === index) {
+                card.style.opacity = '1';
+                card.style.transform = 'translateX(0)';
+                card.style.zIndex = '10';
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'translateX(100%)';
+                card.style.zIndex = '1';
+            }
+        });
+
+        // Update indicators
+        indicators.forEach((indicator, i) => {
+            if (i === index) {
+                indicator.classList.add('active');
+                indicator.classList.remove('bg-white', 'bg-opacity-50');
+                indicator.classList.add('bg-yellow-400');
+            } else {
+                indicator.classList.remove('active');
+                indicator.classList.remove('bg-yellow-400');
+                indicator.classList.add('bg-white', 'bg-opacity-50');
+            }
+        });
+    }
+
+    function nextResume() {
+        currentIndex = (currentIndex + 1) % totalCards;
+        showResume(currentIndex);
+    }
+
+    function prevResume() {
+        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+        showResume(currentIndex);
+    }
+
+    // Auto-shuffle every 4 seconds
+    function startAutoShuffle() {
+        autoShuffle = setInterval(nextResume, 4000);
+    }
+
+    function stopAutoShuffle() {
+        clearInterval(autoShuffle);
+    }
+
+    // Add click handlers to indicators
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            currentIndex = index;
+            showResume(currentIndex);
+            stopAutoShuffle();
+            startAutoShuffle(); // Restart auto-shuffle
+        });
+    });
+
+    // Add hover pause functionality
+    const carousel = document.getElementById('resume-carousel');
+
+    carousel.addEventListener('mouseenter', () => {
+        stopAutoShuffle();
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+        startAutoShuffle();
+    });
+
+    // Add touch/swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoShuffle();
+    });
+
+    carousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        startAutoShuffle();
+    });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Swipe left - next resume
+                nextResume();
+            } else {
+                // Swipe right - previous resume
+                prevResume();
+            }
+        }
+    }
+
+    // Add keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+            nextResume();
+            stopAutoShuffle();
+            startAutoShuffle();
+        } else if (e.key === 'ArrowLeft') {
+            prevResume();
+            stopAutoShuffle();
+            startAutoShuffle();
+        }
+    });
+
+    // Initialize first resume and start auto-shuffle
+    showResume(0);
+    startAutoShuffle();
+
+    // Add skill tag hover effects
+    function addSkillTagEffects() {
+        const skillTags = document.querySelectorAll('.resume-card span[class*="bg-"]');
+        skillTags.forEach(tag => {
+            tag.addEventListener('mouseenter', () => {
+                tag.style.transform = 'scale(1.1)';
+                tag.style.transition = 'transform 0.2s ease';
+            });
+            
+            tag.addEventListener('mouseleave', () => {
+                tag.style.transform = 'scale(1)';
+            });
+        });
+    }
+
+    // Add random skill highlighting effect
+    function highlightRandomSkill() {
+        const visibleCard = document.querySelector('.resume-card[style*="opacity: 1"]');
+        if (visibleCard) {
+            const skillTags = visibleCard.querySelectorAll('span[class*="bg-"]');
+            if (skillTags.length > 0) {
+                // Reset all tags
+                skillTags.forEach(tag => {
+                    tag.style.transform = 'scale(1)';
+                    tag.style.boxShadow = 'none';
+                });
+                
+                // Highlight random tag
+                const randomTag = skillTags[Math.floor(Math.random() * skillTags.length)];
+                randomTag.style.transform = 'scale(1.1)';
+                randomTag.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+                
+                setTimeout(() => {
+                    randomTag.style.transform = 'scale(1)';
+                    randomTag.style.boxShadow = 'none';
+                }, 1500);
+            }
+        }
+    }
+
+    // Add ATS score pulse effect
+    function pulseATSScore() {
+        const visibleCard = document.querySelector('.resume-card[style*="opacity: 1"]');
+        if (visibleCard) {
+            const atsScore = visibleCard.querySelector('.bg-emerald-50');
+            if (atsScore) {
+                atsScore.style.transform = 'scale(1.05)';
+                atsScore.style.transition = 'transform 0.3s ease';
+                
+                setTimeout(() => {
+                    atsScore.style.transform = 'scale(1)';
+                }, 300);
+            }
+        }
+    }
+
+    // Initialize effects
+    addSkillTagEffects();
+    
+    // Start periodic effects
+    setInterval(highlightRandomSkill, 6000);
+    setInterval(pulseATSScore, 8000);
+
+    // Add resume card hover effects
+    resumeCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            if (card.style.opacity === '1') {
+                card.style.transform = 'translateX(0) translateY(-5px)';
+                card.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+            }
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            if (card.style.opacity === '1') {
+                card.style.transform = 'translateX(0) translateY(0)';
+                card.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+            }
+        });
+    });
+
+    // Add intersection observer for performance
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (!autoShuffle) startAutoShuffle();
+            } else {
+                stopAutoShuffle();
+            }
+        });
+    });
+
+    observer.observe(carousel);
+});
+</script>
+
+<!-- Enhanced CSS with Purple Gradient -->
+<style>
+.purple-gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #9b59b6 100%);
+}
+
+.resume-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(100%);
+    opacity: 0;
+    overflow: hidden; /* Remove scrolling */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.resume-card:first-child {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.indicator {
+    transition: all 0.3s ease;
+}
+
+.indicator:hover {
+    transform: scale(1.2);
+}
+
+.indicator.active {
+    transform: scale(1.3);
+}
+
+/* Voice interaction animations */
+@keyframes voicePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.voice-pulse {
+    animation: voicePulse 2s infinite;
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 768px) {
+    .resume-card {
+        padding: 0.75rem;
+        font-size: 0.8rem;
+    }
+    
+    .resume-card h2 {
+        font-size: 0.9rem;
+    }
+    
+    .resume-card h3 {
+        font-size: 0.8rem;
+    }
+    
+    .resume-card p {
+        font-size: 0.7rem;
+        line-height: 1.3;
+    }
+    
+    .resume-card span {
+        font-size: 0.6rem;
+        padding: 0.2rem 0.4rem;
+    }
+    
+    #resume-carousel {
+        height: 18rem;
+    }
+}
+
+@media (max-width: 640px) {
+    #resume-carousel {
+        height: 16rem;
+    }
+    
+    .resume-card {
+        padding: 0.5rem;
+    }
+}
+
+/* Enhanced ATS badge animations */
+@keyframes atsGlow {
+    0%, 100% { box-shadow: 0 0 5px rgba(0, 185, 129, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(0, 185, 129, 0.6); }
+}
+
+.bg-emerald-50 {
+    animation: atsGlow 3s infinite;
+}
+
+/* Voice AI feature highlights */
+.voice-highlight {
+    background: linear-gradient(45deg, #9b59b6, #3498db);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Button hover effects */
+.bg-yellow-400:hover {
+    box-shadow: 0 20px 25px -5px rgba(251, 191, 36, 0.4);
+}
+
+/* Accessibility improvements */
+.resume-card:focus,
+.indicator:focus {
+    outline: 2px solid #9b59b6;
+    outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .resume-card,
+    .indicator,
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+</style>
+{% endblock %}
